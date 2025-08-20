@@ -140,10 +140,9 @@ Canley, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikim
 :class: tip
 Random forests are an ensemble learning method that builds multiple decision trees during training and outputs the mode of the classes (*i.e.*, the most frequent class) as the prediction. You can find more information about random forests [here](https://scikit-learn.org/stable/modules/ensemble.html#forests-of-randomized-trees).
 
-![Alt text](https://media.datacamp.com/legacy/v1718113325/image_7f309c633f.png)
-
 [DataCamp](https://www.datacamp.com/tutorial/random-forests-classifier-python)
 ```
+<!-- ![Alt text](https://media.datacamp.com/legacy/v1718113325/image_7f309c633f.png) -->
 
 ```{code-cell} ipython3
 from sklearn.linear_model import LogisticRegression
