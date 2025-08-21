@@ -54,7 +54,7 @@ project:
         - file: lecture-27-kinetic-mc.md
         - file: lecture-28-scikit-learn.md
         - file: lecture-29-nested-sampling.md
-    
+
 site:
   template: book-theme
   options:
