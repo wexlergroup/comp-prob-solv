@@ -1,6 +1,8 @@
-# Miscellaneous Resources
+---
+date: August 21, 2025
+---
 
-Last updated: August 21, 2025
+# Appendix A: Miscellaneous Resources
 
 This appendix collects assorted references and curiosities that pair well with this course. Items are grouped by theme; brief annotations indicate how you might use each link. Some links may require institutional access or sign-in.
 

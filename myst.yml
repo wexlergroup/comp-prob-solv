@@ -58,6 +58,7 @@ project:
       children:
         - file: appendix-a-misc-resources.md
         - file: appendix-b-readme-tips.md
+        - file: appendix-c-plotting-and-viz.md
 
 site:
   template: book-theme

@@ -1,4 +1,8 @@
-# GitHub README Conventions
+---
+date: August 21, 2025
+---
+
+# Appendix B: GitHub README Conventions
 
 ---
 
@@ -16,7 +20,7 @@
    - Minimal working examples (command-line invocation, Python/Julia snippets, etc.).
    - Show expected output or figures when relevant.
 
-4. **Project Structure / Documentation Links**
+4. **Project Structure/Documentation Links**
    - Point to API docs, wiki, or Jupyter Book if detailed documentation is elsewhere.
    - Optional: include a file tree for orientation.
 
@@ -28,7 +32,7 @@
    - Name and link to the `LICENSE` file.
    - GitHub automatically recognizes [SPDX](https://spdx.org/) identifiers.
 
-7. **Acknowledgments / Citation**
+7. **Acknowledgments/Citation**
    - Funding, collaborators, or citation guidelines (with DOI/Zenodo badge).
    - For academic projects, a `CITATION.cff` file is recommended.
 
