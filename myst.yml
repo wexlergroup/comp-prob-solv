@@ -57,6 +57,7 @@ project:
     - title: Appendix
       children:
         - file: appendix-a-misc-resources.md
+        - file: appendix-b-readme-tips.md
 
 site:
   template: book-theme
