@@ -102,6 +102,8 @@ This appendix collects assorted references and curiosities that pair well with t
   <https://www.linkedin.com/posts/justin-hodges-phd-3432a58b_physics-statistics-math-ugcPost-7293143917791694848-3fxk/>
 - **Cornell Chem 7870 homework**: Reference assignment on PDE solvers; content may change.  
   <https://github.com/cornell-chem-7870/chem-7870-2025-pde-solvers-homework_10>
+- **LinkedIn post (Andrew Rosen)**: Access and visibility may vary.  
+  <https://www.linkedin.com/posts/andrew-s-rosen_while-im-a-big-proponent-of-general-purpose-activity-7359219267877130242-2Zeb/?rcm=ACoAAATbG_QBvs2odhZQvbGP20f5rd_uxTwal8c>
 
 ---
 
