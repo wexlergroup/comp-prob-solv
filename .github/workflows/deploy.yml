@@ -54,7 +54,7 @@ jobs:
             pip install \
               ipykernel \
               jupyter-server jupyter-client nbclient nbformat traitlets tornado pyzmq \
-              numpy scipy pandas matplotlib ase jupytext scikit-learn torch torchvision mace-torch seaborn
+              numpy scipy pandas matplotlib ase jupytext scikit-learn torch torchvision mace-torch seaborn openpyxl
           fi
 
       # Install the MyST CLI (Node side)
