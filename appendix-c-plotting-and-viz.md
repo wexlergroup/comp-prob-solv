@@ -1,5 +1,5 @@
 ---
-date: August 21, 2025
+date: 2025-08-21
 ---
 
 # Appendix C: Python Plotting & Chemical Structure Visualization
