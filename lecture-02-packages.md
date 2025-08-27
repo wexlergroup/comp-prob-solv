@@ -383,11 +383,11 @@ In this `DataFrame`, the index column functions like the row numbers in Excel, a
 
 ### 4.4 Reading and Writing Data
 
-Pandas provides functions for reading and writing data in a variety of formats, such as CSV, Excel, and SQL databases. For this example, you can download the `data.csv` file we'll be using [here](https://wustl.instructure.com/courses/141498/files/8299165/download?download_frd=1).
+Pandas provides functions for reading and writing data in a variety of formats, such as CSV, Excel, and SQL databases. For this example, you can download the dataset [`cohesive_energies.csv`](https://github.com/wexlergroup/comp-prob-solv/blob/main/data/cohesive_energies.csv).
 
 ```{code-cell} ipython3
 # Read data from a CSV file
-df = pd.read_csv('data.csv')
+df = pd.read_csv('data/cohesive_energies.csv')
 
 print(df)
 ```
