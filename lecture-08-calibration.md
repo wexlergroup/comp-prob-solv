@@ -98,13 +98,13 @@ Fitting a calibration curve is not the end of the story. We need to know how con
 
 ### A Theoretical Interlude
 
-In OLS, the sum of squared errors (SSE) or residuals (SSR) is key in determining the confidence intervals for the slope and intercept. The SSR is defined as
+In OLS, the **sum of squared errors (SSE)** or **residuals (SSR)** is key in determining the confidence intervals for the slope and intercept. The SSR is defined as
 
 $$
 SSR = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 $$
 
-where $y_i$ is the observed value of the dependent variable, $\hat{y}_i$ is the predicted value of the dependent variable, and $n$ is the number of data points. Looking at the plot above, this would correspond to summing the squares of the vertical distances (gray lines) between the observed data points and the line. The SSR is related to the variance of the residuals, which is defined as
+where $y_i$ is the observed value of the dependent variable, $\hat{y}_i$ is the predicted value of the dependent variable, and $n$ is the number of data points. Looking at the plot above, this would correspond to summing the squares of the vertical distances (gray lines) between the observed data points and the line. The SSR is related to the **standard error of the regression**, which is defined as
 
 ````{margin}
 ```{note}
@@ -113,27 +113,27 @@ We divide SSR by $n-2$ (not $n$) because estimating the slope and intercept uses
 ````
 
 $$
-\sigma^2 = \frac{SSR}{n-2}
+s_{y/x} = \frac{SSR}{n-2}
 $$
 
-where $n$ is the number of data points. The variance of the residuals is used to calculate the standard errors of the slope and intercept, which are then used to calculate the confidence intervals. The standard errors of the slope and intercept are defined as
+where $n$ is the number of data points. The variance of the residuals is used to calculate the standard errors of the slope and intercept, which are then used to calculate the confidence intervals. The **standard errors of the slope and intercept** are defined as
 
 $$
-SE(\hat{\beta}_1) = \sqrt{\frac{\sigma^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}}
-$$
-
-$$
-SE(\hat{\beta}_0) = \sqrt{\sigma^2 \left( \frac{1}{n} + \frac{\bar{x}^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2} \right)}
-$$
-
-where $\hat{\beta}_1$ is the estimated slope, $\hat{\beta}_0$ is the estimated intercept, $x_i$ is the value of the independent variable, $\bar{x}$ is the mean of the independent variable, and $n$ is the number of data points. The confidence intervals for the slope and intercept are then calculated as
-
-$$
-CI(\hat{\beta}_1) = \hat{\beta}_1 \pm t_{\alpha/2} SE(\hat{\beta}_1)
+s_{\hat{\beta}_1} = \frac{s_{y/x}}{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^2}}
 $$
 
 $$
-CI(\hat{\beta}_0) = \hat{\beta}_0 \pm t_{\alpha/2} SE(\hat{\beta}_0)
+s_{\hat{\beta}_0} = s_{y/x} \sqrt{\frac{\sum_{i=1}^{n} x_i^2}{n \sum_{i=1}^{n} (x_i - \bar{x})^2}}
+$$
+
+where $\hat{\beta}_1$ is the estimated slope, $\hat{\beta}_0$ is the estimated intercept, $x_i$ is the value of the independent variable, $\bar{x}$ is the mean of the independent variable, and $n$ is the number of data points. The **confidence intervals for the slope and intercept** are then calculated as
+
+$$
+CI_{\hat{\beta}_1} = \hat{\beta}_1 \pm t_{\alpha/2} s_{\hat{\beta}_1}
+$$
+
+$$
+CI_{\hat{\beta}_0} = \hat{\beta}_0 \pm t_{\alpha/2} s_{\hat{\beta}_0}
 $$
 
 where $t_{\alpha/2}$ is the critical value of the $t$-distribution with $n-2$ degrees of freedom and a significance level of $\alpha/2$. The confidence intervals give us a range of values likely to contain the true value of the slope and intercept with a certain level of confidence.
@@ -147,22 +147,22 @@ Let's calculate the confidence intervals for the calibration curve's slope and i
 residuals = absorbance - line
 
 # Calculate the sum of the squared residuals
-def sse(residuals):
+def ssr(residuals):
     return np.sum(residuals ** 2)
 
 # Test the function
-print(sse(residuals))
+print(ssr(residuals))
 ```
 
-Now, let us write a function to compute the variance of the residuals.
+Now, let us write a function to compute the standard error of the regression.
 
 ```{code-cell} ipython3
-# Calculate the variance of the residuals
-def variance(residuals):
-    return sse(residuals) / (len(residuals) - 2)
+# Calculate the standard error of the regression
+def se_regression(residuals):
+    return ssr(residuals) / (len(residuals) - 2)
 
 # Test the function
-print(variance(residuals))
+print(se_regression(residuals))
 ```
 
 OK, now we can calculate the standard errors of the slope and intercept.
@@ -171,7 +171,7 @@ OK, now we can calculate the standard errors of the slope and intercept.
 # Calculate the standard error of the slope
 def se_slope(x, residuals):
     # numerator
-    numerator = variance(residuals)
+    numerator = se_regression(residuals)
     # denominator
     x_mean = np.mean(x)
     denominator = np.sum((x - x_mean) ** 2)
@@ -182,12 +182,15 @@ print(se_slope(concentration, residuals))
 
 # Calculate the standard error of the intercept
 def se_intercept(x, residuals):
+    # prefactor
+    prefactor = se_regression(residuals)
     # numerator
-    numerator = variance(residuals)
+    numerator = np.sum(x ** 2)
     # denominator
+    n = len(x)
     x_mean = np.mean(x)
-    denominator = len(x) * np.sum((x - x_mean) ** 2)
-    return np.sqrt(numerator / denominator)
+    denominator = n * np.sum((x - x_mean) ** 2)
+    return prefactor * np.sqrt(numerator / denominator)
 
 # Test the function
 print(se_intercept(concentration, residuals))
@@ -234,7 +237,7 @@ def confidence_interval_intercept(x, residuals, confidence_level):
     return critical_t_value * se
 
 # Calculate the 95% confidence interval for the intercept
-print(f"intercept: {intercept:.3f} +/- {confidence_interval_intercept(concentration, residuals, 0.95):.3f}")
+print(f"intercept: {intercept:.6f} +/- {confidence_interval_intercept(concentration, residuals, 0.95):.6f}")
 ```
 
 ## Correlation Analysis
@@ -242,7 +245,7 @@ print(f"intercept: {intercept:.3f} +/- {confidence_interval_intercept(concentrat
 The last step in analyzing calibration data is to perform correlation analysis. Correlation analysis assesses the strength of the relationship between the two variables. In this case, we are interested in the correlation between the diacetyl concentration and the absorbance value. The correlation coefficient measures the strength and direction of the relationship between two variables. It ranges from -1 to 1, with 1 indicating a perfect positive relationship, -1 indicating a perfect negative relationship, and 0 indicating no relationship. The correlation coefficient is calculated as
 
 $$
-r = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^2 \sum_{i=1}^{n} (y_i - \bar{y})^2}}
+r = \frac{\sum_{i=1}^{n} \left[ (x_i - \bar{x})(y_i - \bar{y}) \right]}{\sqrt{\sum_{i=1}^{n} \left[ (x_i - \bar{x})^2 \right] \sum_{i=1}^{n} \left[ (y_i - \bar{y})^2 \right]}}
 $$
 
 where $x_i$ is the value of the independent variable, $\bar{x}$ is the mean of the independent variable, $y_i$ is the value of the dependent variable, and $\bar{y}$ is the mean of the dependent variable. The correlation coefficient gives us an indication of how well the two variables are related. A correlation coefficient close to 1 or -1 indicates a strong relationship, while a correlation coefficient close to 0 indicates a weak relationship.
