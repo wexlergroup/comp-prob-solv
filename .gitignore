@@ -1,6 +1,4 @@
 # MyST build outputs
 _build
 vacancy_diffusion.extxyz
-lecture-01-introduction.ipynb
-lecture-02-packages.ipynb
-lecture-03-control.ipynb
+lecture-*-*.ipynb
