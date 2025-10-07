@@ -23,11 +23,13 @@ By the end of this lecture, you should be able to
 
 ## Introduction to Monte Carlo Method
 
-The **Monte Carlo method** is a powerful computational technique used to solve problems by relying on random sampling. To illustrate its basic idea, let’s start with a simple example: evaluating the integral of $ f(x) = x^2 $ over the interval $[0, 1]$
+The **Monte Carlo method** is a powerful computational technique used to solve problems by relying on {sc}`random sampling`. To illustrate its basic idea, let’s start with a {sc}`simple example`: evaluating the integral of $ f(x) = x^2 $ over the interval $[0, 1]$
 
 $$
 I = \int_0^1 x^2 \, dx
 $$
+
+<!-- TODO: Add a figure plotting the function f(x) = x^2 and the area under the curve, coloring the data points blue and the area under the curve translucent red -->
 
 ### Relating Integrals to Averages
 
@@ -45,13 +47,20 @@ $$
 
 ### Monte Carlo Estimation
 
-Instead of solving this integral analytically, we can approximate it by randomly sampling points from the interval $[0, 1]$ and evaluating $ x^2 $ at those points. This is the essence of the **Monte Carlo method**.
+Instead of solving this integral analytically, we can approximate it by {sc}`randomly sampling points from the interval` $[0, 1]$ and {sc}`evaluating` $ x^2 $ {sc}`at those points`. This is the essence of the **Monte Carlo method**.
 
-Suppose we generate $ N $ random numbers $ x_i $ uniformly distributed between 0 and 1. We can approximate the integral as the average of $ x_i^2 $
+Suppose we generate $ N $ random numbers $ x_i $ {sc}`uniformly distributed between 0 and 1`. We can approximate the integral as the average of $ x_i^2 $
 
 $$
 I \approx \frac{1}{N} \sum_{i=1}^N x_i^2
 $$
+
+<!--
+TODO: Add the following annotations to the preceding equation:
+1. A line from the $N$ above the summation to a note that says "# of random numbers."
+2. A line from the $x_i$ inside the summation to a note that says "random numbers."
+3. A dashed box around the summation, with a note that says "uniformly distributed b/w 0 & 1."
+-->
 
 This gives us an estimate for the integral. The larger the number of random samples $ N $, the closer the estimate gets to the true value.
 
@@ -95,7 +104,7 @@ The **uniform distribution** is the simplest probability distribution, character
 ```
 ````
 
-In the previous example, we used a uniform distribution to generate random numbers for our Monte Carlo simulation. However, we can often improve the efficiency of these simulations by employing a different probability distribution—this approach is known as **importance sampling**.
+In the previous example, we used a uniform distribution to generate random numbers for our Monte Carlo simulation. However, we can often {sc}`improve the efficiency of these simulations by employing a different probability distribution`—this approach is known as {sc}`**importance sampling**`.
 
 ### Motivation for Importance Sampling
 
@@ -105,7 +114,7 @@ $$
 I = \int_0^1 x^2 \, dx
 $$
 
-Using a uniform distribution, the Monte Carlo estimator would directly sample from this integral. However, efficiency can be improved by selecting a distribution that matches the behavior of the integrand, *i.e.*, a distribution that emphasizes regions where $x^2$ is larger. This results in a smaller variance of the estimator.
+Using a uniform distribution, the Monte Carlo estimator would directly sample from this integral. However, efficiency can be improved by selecting a distribution that matches the behavior of the integrand, *i.e.*, a {sc}`distribution that emphasizes regions where` $x^2$ {sc}`is larger`. This results in a smaller variance of the estimator.
 
 ### Rewriting the Integral
 
@@ -119,13 +128,15 @@ where $g(x)$ is any probability distribution (with support over [0, 1]) that can
 
 ### Choosing a Suitable $g(x)$
 
-A good candidate for $g(x)$ is the **Beta distribution** with parameters $\alpha = 3$ and $\beta = 1$. The probability density function of the Beta distribution is
+A good candidate for $g(x)$ is the {sc}`**Beta distribution**` with parameters $\alpha = 3$ and $\beta = 1$. The probability density function of the Beta distribution is
 
 $$
 g(x) = \frac{x^{\alpha - 1} (1 - x)^{\beta - 1}}{B(\alpha, \beta)}
 $$
 
 where $B(\alpha, \beta)$ is the Beta function, and in this case, it biases the samples toward larger values of $x$, aligning well with the shape of $x^2$.
+
+<!-- TODO: Add a figure plotting the Beta distribution with the chosen parameters, labeling the curve as "$3 x^2$" -->
 
 ### Monte Carlo Estimator with Importance Sampling
 
@@ -134,6 +145,8 @@ Using the Beta distribution, the integral can be approximated as
 $$
 I \approx \frac{1}{N} \sum_{i=1}^N \frac{x_i^2}{g(x_i)}
 $$
+
+<!-- TODO: Add, to the preceding equation, a dashed box around the summation to a note that says "beta-distributed b/w 0 & 1." -->
 
 where $x_i$ are samples drawn from the Beta distribution.
 
