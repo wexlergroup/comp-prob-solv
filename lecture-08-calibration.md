@@ -357,3 +357,9 @@ An ideal diatomic gas has a temperature-independent constant pressure heat capac
 3. Calculate the correlation coefficient between the temperature and heat capacity.
 
 Good luck!
+
+---
+
+## References
+
+Stone, D. C.; Ellis, J. Errors in the Regression Equation. *Statistics Tutorial - Instrumental Analysis and Calibration*, June 5, 2020. [https://sites.chem.utoronto.ca/chemistry/coursenotes/analsci/stats/ErrRegr.html](https://sites.chem.utoronto.ca/chemistry/coursenotes/analsci/stats/ErrRegr.html).
