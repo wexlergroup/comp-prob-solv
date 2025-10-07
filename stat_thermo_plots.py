@@ -22,7 +22,7 @@ def plot_microstate_macrostate(filename="microstate_macrostate.png"):
     axs[0].grid(True)
     
     # Macrostate plot
-    axs[1].set_title("Macrostate: Temperature, Pressure, Volume")
+    axs[1].set_title("Macrostate: {Microstates} $\\rightarrow$ Temperature, Pressure, Volume")
     axs[1].set_xlim(0, 10)
     axs[1].set_ylim(0, 10)
     axs[1].text(5, 7, "T = 300 K", fontsize=14, ha='center')
