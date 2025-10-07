@@ -13,6 +13,23 @@ kernelspec:
 
 # Chapter 11: Ensembles and Ergodicity
 
+<!--
+TODO: Add a diagram illustrating the different types of ensembles and their relationships:
+1. Left panel
+- Label "system," "surroundings," and "boundary."
+- Label heat exchange as squiggly left right arrow penetrating the boundary but with a question mark over a circle pinpointing the arrow's intersection with the boundary, all to the left of the word "heat."
+- Label matter exchange as a squiggly left right arrow penetrating the boundary but with a question mark over a circle pinpointing the arrow's intersection with the boundary, all to the left of the word "matter."
+- Label "volume exchange" as a squiggly left right arrow penetrating the boundary but with a question mark over a circle encompassing the entire arrow and a thick line segment parallel to the boundary at the arrow's intersection with the boundary, indicating possible compression (left) or expansion (right) of the system, all to the right of the word "volume."
+- Annotate "heat," "matter," and "volume" with lines pointing to the phrases "controlled by T", "controlled by μ," and "controlled by P," respectively.
+2. Right panel
+- A table with five rows and two columns.
+- The first row is a header row with the following column headings: "Ensemble" and "Constants."
+- The second row corresponds to the microcanonical ensemble and contains the following entries: "Microcanonical" and "N, V, E (NVE)."
+- The third row corresponds to the canonical ensemble and contains the following entries: "Canonical" and "N, V, T (NVT)."
+- The fourth row corresponds to the isothermal-isobaric ensemble and contains the following entries: "Isothermal-Isobaric" and "N, P, T (NPT)."
+- The fifth row corresponds to the grand canonical ensemble and contains the following entries: "Grand Canonical" and "μ, V, T (μVT)."
+-->
+
 ## Learning Objectives
 
 By the end of this lecture, you should be able to
@@ -24,37 +41,41 @@ By the end of this lecture, you should be able to
 
 In the previous lecture, we discussed the concept of a microstate and how it can be used to describe the state of a system. However, in many cases, we are not interested in the properties of individual microstates but rather in the average behavior of a system over many microstates. This is where the concept of an ensemble comes in.
 
-An ensemble is a collection of systems that are identical in all respects except for the particular microstate they occupy. By studying the properties of an ensemble, we can make predictions about the behavior of a system without having to consider every possible microstate individually.
+An {sc}`ensemble` is a collection of systems that are {sc}`identical in all respects except for the particular microstate they occupy`. By studying the properties of an ensemble, we can make predictions about the behavior of a system without having to consider every possible microstate individually.
 
 ## Types of Ensembles
 
 There are several different types of ensembles that are commonly used in statistical mechanics. The choice of ensemble depends on the conditions under which the system is being studied. Each of these ensembles has its own set of constraints and corresponding thermodynamic potentials that can be used to describe the behavior of the system.
 
-### Microcanonical Ensemble
+### {sc}`Microcanonical` Ensemble
 
-In this ensemble, the system is isolated and has fixed values of energy, volume, and number of particles. The microcanonical ensemble is used to study systems that are closed and do not exchange energy or particles with their surroundings.
+In this ensemble, the {sc}`system is isolated` (constant NVE) and has fixed values of energy, volume, and number of particles. The microcanonical ensemble is used to study systems that are isolated and do not exchange energy or particles with their surroundings.
 
 #### Microcanonical Ensemble: Example
 
 ![One electron in an f orbital](microcanonical_ensemble.png)
 
-Consider a system of one electron in an f orbital. The energy of the electron is quantized, and the electron can occupy one of the 14 f orbitals. The microcanonical ensemble for this system would consist of all possible configurations of the electron in the f orbitals that have the same total energy. The **equal a priori probability postulate** states that all microstates with the same energy are equally likely to occur. Therefore, the probability of finding the electron in any particular f orbital is the same, *i.e.*, 1/14.
+Consider a system of one electron in an f orbital. The energy of the electron is quantized, and the electron can occupy one of the 14 f orbitals. The microcanonical ensemble for this system would consist of all possible configurations of the electron in the f orbitals that have the same total energy. The {sc}`**equal a priori probability postulate**` states that {sc}`all microstates with the same energy are equally likely to occur`. Therefore, the probability of finding the electron in any particular f orbital is the same, *i.e.*, 1/14.
 
-### Canonical Ensemble
+<!-- TODO: Add a note about the equal a priori probability postulate being a crucial starting point for stat. mech. and ask students "can you prove it? 🙂" -->
 
-In this ensemble, the system is in thermal contact with a heat bath at a fixed temperature. The canonical ensemble is used to study systems that are in thermal equilibrium with their surroundings.
+### {sc}`Canonical` Ensemble
 
-### Isothermal-Isobaric Ensemble
+In this ensemble, the {sc}`system is in thermal contact with a heat bath at constant NVT`. The canonical ensemble is used to study systems that are in thermal equilibrium with their surroundings.
 
-In this ensemble, the system is in thermal and mechanical equilibrium with a heat bath at a fixed temperature and pressure. The isothermal-isobaric ensemble is used to study systems that are in thermal and mechanical equilibrium with their surroundings.
+### {sc}`Isothermal-Isobaric` Ensemble
+
+<!-- TODO: Add a joke about "stat. mech-ers" starting to get less clever with the name here (?) -->
+
+In this ensemble, the {sc}`system is in thermal and mechanical equilibrium with a heat bath at constant NPT`. The isothermal-isobaric ensemble is used to study systems that are in thermal and mechanical equilibrium with their surroundings.
 
 #### Isothermal-Isobaric Ensemble: Example
 
-Consider a gas confined to a container with a movable piston. The gas is in thermal equilibrium with a heat bath at a fixed temperature and pressure. The isothermal-isobaric ensemble for this system would consist of all possible configurations of the gas molecules that have the same number of particles, pressure, and temperature.
+Consider a {sc}`gas` confined to a {sc}`container` with a {sc}`movable piston`. The gas is in thermal equilibrium with a heat bath at a fixed temperature and pressure. The isothermal-isobaric ensemble for this system would consist of all possible configurations of the gas molecules that have the same number of particles, pressure, and temperature.
 
-### Grand Canonical Ensemble
+### {sc}`Grand Canonical` Ensemble
 
-In this ensemble, the system is in thermal and chemical equilibrium with a heat bath at a fixed temperature and chemical potential. The grand canonical ensemble is used to study systems that are in thermal and chemical equilibrium with their surroundings.
+In this ensemble, the system is in thermal and chemical equilibrium with a heat bath at constant µVT ($\mu$ controls matter exchange, $T$ controls energy exchange as heat). The grand canonical ensemble is used to study systems that are in thermal and chemical equilibrium with their surroundings.
 
 #### Grand Canonical Ensemble: Example
 
@@ -100,11 +121,15 @@ The plot above shows the coverage of the surface by the sorbent particles as a f
 
 ## Ergodicity
 
-The concept of ergodicity is central to the relationship between ensemble averages and time averages in statistical mechanics. A system is said to be ergodic if it explores all of its microstates over time. In an ergodic system, the time average of a property is equal to the ensemble average of that property.
+The concept of ergodicity is central to the relationship between ensemble averages and time averages in statistical mechanics. A dynamical system is said to be {sc}`ergodic` if it {sc}`explores all of its microstates over time`. In an ergodic system, the time average of a property is equal to the ensemble average of that property.
+
+<!-- TODO: Add an equation (?) illustrating "time average = ensemble average" -->
 
 ### Implications of Ergodicity
 
 If a system is ergodic, then the ensemble average of a property can be calculated by averaging the property over time. This means that we can use time averages to make predictions about the behavior of a system without having to consider every possible microstate individually.
+
+<!-- TODO: Add a note about ergodicity enabling our use of MD simulations to predict thermo./macro. observables -->
 
 ### Non-Ergodic Systems
 
